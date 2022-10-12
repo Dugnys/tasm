@@ -1,0 +1,32 @@
+.model small
+.stack 100h
+
+.data
+
+.code
+start:
+
+
+    mov ax, 184
+
+convert:
+
+    mov bx, 10
+    div bx
+print:
+
+    push ax
+    mov ah, 02h
+    add dl, 30h
+    int 21h
+
+    xor dx, dx
+    pop ax
+    cmp ax, 0
+    jne convert
+
+close:
+    mov ah, 4Ch
+    int 21h
+
+end start
